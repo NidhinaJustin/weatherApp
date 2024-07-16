@@ -7,9 +7,10 @@ interface WeatherProps {
 
 export default function Weather({ data }: WeatherProps) {
     console.log(Object.keys(data));
-    
+   
   return (
     <div className="weather">
+
       {data.id? (
         <>
           <div>Id : {data.id}</div>

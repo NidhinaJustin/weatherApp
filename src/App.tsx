@@ -3,6 +3,7 @@ import './App.css';
 import React, { useEffect, useState } from 'react';
 import {initialDataSetValues ,country_name , api_key} from "./constants";
 import Weather from './components/Weather';
+import useFetchData from './useFetchData';
 
 //wthin the same file
 
@@ -14,8 +15,9 @@ interface dataToSet{
 }
 
 function App() {
-  const [weatherData , setWeatherData] =useState<dataToSet>(initialDataSetValues);
+  // const [weatherData , setWeatherData] =useState<dataToSet>(initialDataSetValues);
   const [cityName , setCityName] =useState<string>("")
+  const {weatherData, setWeatherData} =useFetchData({ url: 'London' })
 
   useEffect(()=>{
     fetchWeatherData();
@@ -49,7 +51,7 @@ function App() {
     <div className="App">
       <header className="App-header">
       <label>  <input type='text' name="cityName" value={cityName} onChange={handleInputChange} /> Enter Country Name</label>
-      <Weather data={weatherData}/>
+      <Weather  data={weatherData}/>
       </header>
     </div>
   );
